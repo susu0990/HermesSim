@@ -37,7 +37,7 @@ jobs:
 
       - name: Run model training
         run: |
-          python your_script.py \
+          python main.py \
             --num_epochs 1 \
             --config config.json \
             --dataset one \
