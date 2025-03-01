@@ -1,0 +1,33 @@
+name: Run Model Training
+
+on:
+  push:
+    branches:
+      - main  # 当代码推送到 main 分支时触发
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  train:
+    runs-on: ubuntu-latest  # 使用 GitHub 提供的虚拟机（默认支持 CPU）
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run model training
+        run: |
+          python your_script.py \
+            --num_epochs 1 \
+            --config config.json \
+            --dataset one \
+            --featuresdir features \
+            --device cpu \
+            --label test_one_epoch
