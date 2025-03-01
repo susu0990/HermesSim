@@ -22,6 +22,10 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Verify PyTorch installation
+        run: |
+          python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
+
       - name: Run model training
         run: |
           python your_script.py \
