@@ -80,7 +80,8 @@ def iter_configs(args):
 
         # Create the output directory
         if not isdir(args.outputdir):
-            os.mkdir(args.outputdir)
+        #    os.mkdir(args.outputdir)
+            os.makedirs(args.outputdir, exist_ok=True)
             print("Created outputdir: {}".format(args.outputdir))
 
         testing = params.get('is_testing', False)
@@ -88,7 +89,8 @@ def iter_configs(args):
         for idx in range(repeating):
             if repeating > 1:
                 args.outputdir = join(item_outputdir, idx)
-                os.mkdir(args.outputdir)
+        #        os.mkdir(args.outputdir)
+                os.makedirs(args.outputdir, exist_ok=True)
             
             # Create logger
             if log_fh is not None:
@@ -186,8 +188,10 @@ def main():
 
     # Create the output directory
     if not isdir(args.outputdir):
-        os.mkdir(args.outputdir)
+    #    os.mkdir(args.outputdir)
+        os.makedirs(args.outputdir, exist_ok=True)
         print("Created outputdir: {}".format(args.outputdir))
+        
 
     # Iter config items
     for config, desc, testing in iter_configs(args):
