@@ -17,11 +17,16 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.10'
-
+          
+      - name: Install dependencies
+        run: |
+          # 手动安装 torch==1.13.1+cpu
+          pip install torch==1.13.1+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+      
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-
+          
       - name: Verify PyTorch installation
         run: |
           python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
