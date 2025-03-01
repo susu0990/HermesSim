@@ -152,16 +152,16 @@ def main():
                         help="Name of the feature dict json file. ")
 
     # parser.add_argument("--device", default="cuda",
-    #                    help="Device used. ")
+    #                   help="Device used. ")
     parser.add_argument("--device", default="cpu",
-                         help="Device used. ")
+                        help="Device used. ")
 
     # parser.add_argument('--num_epochs', type=int,
     #                    required=False, default=20,
     #                    help='Number of training epochs')
-      parser.add_argument('--num_epochs', type=int,
-                         required=False, default=1,
-                         help='Number of training epochs')
+    parser.add_argument('--num_epochs', type=int,
+                        required=False, default=1,
+                        help='Number of training epochs')
 
     parser.add_argument('--dataset', required=True,
                         choices=['one', 'rtos'],
